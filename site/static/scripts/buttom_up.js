@@ -7,10 +7,10 @@ function button_up_hide(){
 }
 
 window.onwheel = (e) =>{
-    if (e.deltaY >= 0 || $(window).scrollTop() <= 100){
+    if (e.deltaY > 0 || $(window).scrollTop() <= 100){
         button_up_hide()
     }
-    else{
+    else if (e.deltaY < 0){
         btn.style.animation = 'visible 1.5s forwards'
         clearTimeout(timerId)
         btn.style.display = 'block'
