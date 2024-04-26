@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>True Games</title>
-    <link rel="stylesheet" href="../static/style/style.css"">
+    <link rel="stylesheet" href="../static/style/style.css">
     <script
         src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -12,18 +12,32 @@
     </script>
 </head>
 <body id="body">
+    <div id="login-screen">
+        <div id="login">
+            <button onclick="login_out()"><</button>
+            <h1>Авторизация</h1>
+            <div>
+                <input id="log" type="text">
+                <input id="password" type="password">
+                <button onclick="send_log()">Войти</button>
+                <a href="#" onclick="SignIn()">зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+
+
     <div id="up" onclick="button_up_hide()">
         <a href="#body">
-            <img src="./img/arrow_up_cshay87zfupn.svg" alt="up">
+            <img src="../static/img/arrow_up_cshay87zfupn.svg" alt="up">
         </a>
     </div>
     <header>
         <nav>
-            <a href="#">Главная</a>
-            <a href="#about">О нас</a>
-            <a href="#catalog">Каталог</a>
+            <!-- <a href="#">Главная</a> -->
             <a href="#contact">Где искать</a>
-            <a href="#">Войти?</a>
+            <a href="#catalog">Каталог</a>
+            <a href="#about">О нас</a>
+            <a href="#" onclick="login_in()">Войти?</a>
         </nav>
     </header>
     <main>
@@ -42,31 +56,37 @@
                     <img src="../static/img/040_original 1.svg" alt="product">
                     <p>Какаята хрень</p>
                     <p>Цена: оно того не стоит</p>
+                    <button onclick="addProduct('Какаята хрень')">добавить</button>
                 </div>
                 <div class="card">
                     <img src="../static/img/040_original 1.svg" alt="product">
                     <p>Какаята хрень</p>
                     <p>Цена: оно того не стоит</p>
+                    <button onclick="addProduct('Какаята хрень')">добавить</button>
                 </div>
                 <div class="card">
                     <img src="../static/img/040_original 1.svg" alt="product">
                     <p>Какаята хрень</p>
                     <p>Цена: оно того не стоит</p>
+                    <button onclick="addProduct('Какаята хрень')">добавить</button>
                 </div>
                 <div class="card">
                     <img src="../static/img/040_original 1.svg" alt="product">
                     <p>Какаята хрень</p>
                     <p>Цена: оно того не стоит</p>
+                    <button onclick="addProduct('Какаята хрень')">добавить</button>
                 </div>
                 <div class="card">
                     <img src="../static/img/040_original 1.svg" alt="product">
                     <p>Какаята хрень</p>
                     <p>Цена: оно того не стоит</p>
+                    <button onclick="addProduct('Какаята хрень')">добавить</button>
                 </div>
                 <div class="card">
                     <img src="../static/img/040_original 1.svg" alt="product">
                     <p>Какаята хрень</p>
                     <p>Цена: оно того не стоит</p>
+                    <button onclick="addProduct('Какаята хрень')">добавить</button>
                 </div>
             </div>
         </section>
@@ -82,4 +102,5 @@
     </footer>
 </body>
 <script src="../static/scripts/buttom_up.js"></script>
+<script src="../static/scripts/log.js"></script>
 </html>

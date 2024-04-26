@@ -153,11 +153,31 @@ header, main, footer {
   width: 1200px;
 }
 
+button {
+  cursor: pointer;
+}
+
 * {
   text-decoration: none;
   color: black;
 }
 
+@keyframes visible {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes unvisible {
+  100% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 1;
+  }
+}
 body {
   background-image: url("/static/img/Terraria_752x430 2.svg");
   background-size: cover;
@@ -167,6 +187,50 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+body #login-screen {
+  opacity: 0;
+  display: none;
+  z-index: -1;
+  animation: none;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+}
+body #login-screen #login {
+  border-radius: 15px;
+  background-color: #8AC99B;
+  width: 500px;
+  padding: 25px 0;
+}
+body #login-screen #login button {
+  padding: 15px;
+  margin-left: 25px;
+  border-radius: 15px;
+}
+body #login-screen #login h1 {
+  position: relative;
+  bottom: 25px;
+  text-align: center;
+  width: 100%;
+}
+body #login-screen #login div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+body #login-screen #login div button {
+  margin: 0;
+}
+body #login-screen #login div input {
+  border-radius: 5px;
+  width: 75%;
+  height: 25px;
 }
 body #up {
   display: none;
@@ -186,22 +250,6 @@ body #up img {
 }
 body #up img:hover {
   border: #969696 solid 1px;
-}
-@keyframes visible {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes unvisible {
-  100% {
-    opacity: 0;
-  }
-  0% {
-    opacity: 1;
-  }
 }
 body header nav {
   margin: 70px 0 315px 0;
@@ -273,6 +321,23 @@ body main #catalog .cards .card {
 }
 body main #catalog .cards .card P {
   margin-top: 15px;
+}
+body main #catalog .cards .card button {
+  margin-left: calc(50% - 50px);
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  width: 100px;
+  height: 25px;
+  border-radius: 11px;
+  border: #8AC99B solid 1px;
+  background-color: #fff;
+  color: #8AC99B;
+  cursor: pointer;
+}
+body main #catalog .cards .card button:hover {
+  background-color: #8AC99B;
+  color: #fff;
 }
 body footer {
   width: 100%;

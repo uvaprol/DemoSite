@@ -12,6 +12,9 @@ app = Flask(__name__)
 def display_main():
     return render_template('index.html')
 
+@app.route('/SignIn')
+def regestration():
+    return True
 
 
 app.run(host='0.0.0.0', port=80)
