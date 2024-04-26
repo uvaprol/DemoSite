@@ -193,7 +193,7 @@ body #login-screen {
   display: none;
   z-index: -1;
   animation: none;
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100vh;
   justify-content: center;

@@ -1,10 +1,13 @@
 const login_screen = document.getElementById('login-screen')
+const user = document.getElementById('user')
 function login_in(){
     login_screen.style.animation = 'visible 1.5s forwards'
     login_screen.style.display = 'flex'
     login_screen.style.zIndex = 1
 }
-function login_out(){
+function login_out(login){
+    user.innerText = login
+    user.setAttribute('onclick','LogOut()')
     login_screen.style.animation = 'unvisible 1.5s forwards'
     setTimeout(()=>
     {
@@ -13,14 +16,20 @@ function login_out(){
     }, 500)
 }
 function send_log(){
-    const login = $("log").val();
-    const password = $("password").val();
+    const login = $("#log").val();
+    const password = $("#password").val();
     if (login != '' && password != ''){
         $.get("/LogIn", {
             'login'   : login,
-            'paswword': password
-        })
-        login_out()
+            'password': password
+        },
+        (data) => {
+            console.log(data)
+            if (data[0]){
+                login_out(login)
+            }
+        }
+        );
     }
 }
 function SignIn(){
@@ -34,12 +43,23 @@ function SignIn(){
     }
 
 function Regestration(){
-    const login = $("log").val();
-    const password = $("password").val();
-    if (login != '' && password != ''){
+    let login = $("#log").val();
+    let password = $("#password").val();
+    if (login != undefined && password != undefined){
         $.get("/SignIn", {
-            'login'   : login,
-            'paswword': password
-        })
+        'login'   : login,
+        'password': password
+        },
+        (data) => {
+            console.log(data)
+            if (data[0]){
+                login_out(login)
+            }
+        }
+        );
     }
+}
+function LogOut(){
+    user.innerText = 'Войти'
+    user.setAttribute('onclick','login_in()')
 }
