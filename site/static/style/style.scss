@@ -60,6 +60,7 @@ body{
         align-items: center;
         backdrop-filter: blur(15px);
         #login{
+            z-index: 1;
             border-radius: 15px;
             background-color: #8AC99B;
             width: 500px;
