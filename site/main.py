@@ -45,9 +45,9 @@ def add_to_shoper():
     try:
         if df.set_index('login').at[request.args['login'], 'password'] == request.args['password']:
             # df.set_index('login').loc[request.args['login'], ['shoper']] = [request.args['product']]
-            shoper = df.set_index('login').loc['uvaprol', 'shoper']
-            shoper += request.args['product']
             df = df.set_index('login')
+            shoper = df.loc['uvaprol', 'shoper']
+            shoper += request.args['product']
             df.loc['uvaprol', ['shoper']] = shoper
             df.reset_index(inplace= True )
             print(df)
