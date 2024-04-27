@@ -208,6 +208,8 @@ body #login-screen #login {
   padding: 25px 0;
 }
 body #login-screen #login button {
+  position: relative;
+  z-index: 1;
   padding: 15px;
   margin-left: 25px;
   border-radius: 15px;

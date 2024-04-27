@@ -1,7 +1,6 @@
-const catalog = document.getById('catalog_cards')
+const catalog = document.getElementById('catalog_cards')
 
 function addProduct(name){
-    alert(true)
     $.get('/addItem', {
         'product': name,
         'login': seseion_login,
@@ -9,17 +8,20 @@ function addProduct(name){
     });
 }
 function renderProductsCard(){
-    $.get('/get_prosucts', 
+    $.get('/get_prosucts',
         (data) => {
             for (row of data){
+                console.log(row)
                 catalog.innerHTML += `
                 <div class="card">
                     <img src="${row[5]}" alt="product">
                     <p>${row[1]}</p>
                     <p>Цена: ${row[2]}</p>
-                    <button onclick="addProduct('${row[1]}')">добавить</button>
+                    <button onclick="addProduct('${row[0]}')">добавить</button>
                 </div>`
             }
         }
     );
 }
+
+window.onload = () => {renderProductsCard()}

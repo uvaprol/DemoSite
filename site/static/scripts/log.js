@@ -1,5 +1,6 @@
 const login_screen = document.getElementById('login-screen')
 const user = document.getElementById('user')
+const productBasket = document.getElementById('productBasket')
 const h1 = login_screen.getElementsByTagName('h1')
 const a = login_screen.getElementsByTagName('a')
 const button = login_screen.getElementsByTagName('button')
@@ -13,6 +14,7 @@ function login_out(login){
     if (login != undefined){
         user.innerText = login
         user.setAttribute('onclick','LogOut()')
+        productBasket.style.display = 'block'
     }
     login_screen.style.animation = 'unvisible 1.5s forwards'
     setTimeout(()=>
@@ -75,4 +77,10 @@ function Regestration(){
         }
         );
     }
+}
+
+function LogOut(){
+    user.innerText = 'Войти'
+    user.setAttribute('onclick','login_in()')
+    productBasket.style.display = 'none'
 }
