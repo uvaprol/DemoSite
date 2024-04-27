@@ -34,10 +34,22 @@ def regestration():
 def login():
     global df
     try:
-        print(request.args['password'])
         if df.set_index('login').at[request.args['login'], 'password'] == request.args['password']:
             return [True, 'Вы успешно зашли в лк']
     except:
         return [False, 'Ошибка при входе']
+
+@app.route('/addItem')
+def add_to_shoper():
+    global df
+    try:
+        if df.set_index('login').at[request.args['login'], 'password'] == request.args['password']:
+            df.set_index('login').loc[request.args['login'], ['shoper']] = [request.args['product']]
+            print(df)
+            return [True, 'Вы успешно зашли в лк']
+    except:
+        print(df)
+        return [False, 'Ошибка при входе']
+
 
 app.run(host='0.0.0.0', port=80)
