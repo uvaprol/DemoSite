@@ -6,3 +6,12 @@ function addProduct(name){
         'password': seseion_login
     });
 }
+function renderProductsCard(){
+    $.get('/get_prosucts', 
+        (data) => {
+            for (row of data){
+                
+            }
+        }
+    );
+}
