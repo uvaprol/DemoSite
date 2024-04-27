@@ -56,5 +56,9 @@ def add_to_shoper():
         print(df)
         return [False, 'Ошибка добавления']
 
+@app.route('/get_prosucts')
+def post_catalog_cards():
+    return True
+
 
 app.run(host='0.0.0.0', port=80)
