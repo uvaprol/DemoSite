@@ -44,12 +44,17 @@ def add_to_shoper():
     global df
     try:
         if df.set_index('login').at[request.args['login'], 'password'] == request.args['password']:
-            df.set_index('login').loc[request.args['login'], ['shoper']] = [request.args['product']]
+            # df.set_index('login').loc[request.args['login'], ['shoper']] = [request.args['product']]
+            shoper = df.set_index('login').loc['uvaprol', 'shoper']
+            shoper += request.args['product']
+            df = df.set_index('login')
+            df.loc['uvaprol', ['shoper']] = shoper
+            df.reset_index(inplace= True )
             print(df)
-            return [True, 'Вы успешно зашли в лк']
+            return [True, 'Продукт добавлен в корзину']
     except:
         print(df)
-        return [False, 'Ошибка при входе']
+        return [False, 'Ошибка добавления']
 
 
 app.run(host='0.0.0.0', port=80)
