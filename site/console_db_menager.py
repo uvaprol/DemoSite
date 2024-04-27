@@ -19,7 +19,15 @@ import pandas as pd
 #
 # df.to_csv('products.csv', index=False, header=True)
 
-df = pd.read_csv('products.csv')
+df = pd.DataFrame(columns=[
+    'status',
+    'order',
+    'date'
+])
+
+df.to_csv('ordering.csv', index=False, header=True)
+
+df = pd.read_csv('ordering.csv')
 # a = df.set_index('login').loc['uvaprol', 'shoper']
 # a += 'a'
 # df = df.set_index('login')

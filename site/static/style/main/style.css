@@ -1,0 +1,374 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #5F3119;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #8AC99B;
+  border-radius: 20px;
+}
+
+header, main, footer {
+  width: 1200px;
+}
+
+button {
+  cursor: pointer;
+}
+
+* {
+  text-decoration: none;
+  color: black;
+}
+
+@keyframes visible {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes unvisible {
+  100% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 1;
+  }
+}
+body {
+  background-image: url("/static/img/Terraria_752x430 2.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body #login-screen {
+  opacity: 0;
+  display: none;
+  z-index: -1;
+  animation: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+}
+body #login-screen #login {
+  border-radius: 15px;
+  background-color: #8AC99B;
+  width: 500px;
+  padding: 25px 0;
+}
+body #login-screen #login button {
+  position: relative;
+  z-index: 1;
+  padding: 15px;
+  margin-left: 25px;
+  border-radius: 15px;
+}
+body #login-screen #login h1 {
+  position: relative;
+  bottom: 25px;
+  text-align: center;
+  width: 100%;
+}
+body #login-screen #login div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+body #login-screen #login div button {
+  margin: 0;
+}
+body #login-screen #login div input {
+  border-radius: 5px;
+  width: 75%;
+  height: 25px;
+}
+body #up {
+  display: none;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  opacity: 0;
+  animation: visible 1.5s forwards;
+}
+body #up img {
+  padding: 12px;
+  width: 30px;
+  height: 30px;
+  border: #2e2e2e solid 1px;
+  border-radius: 15px;
+  transition: border 0.25s ease-in-out;
+}
+body #up img:hover {
+  border: #969696 solid 1px;
+}
+body header nav {
+  margin: 70px 0 315px 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #8AC99B;
+  border-radius: 5px;
+  filter: drop-shadow(0px 4px rgba(0, 0, 0, 0.1450980392));
+}
+body header nav a {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+body header nav a:hover {
+  color: #ECD798;
+  filter: drop-shadow(2px 4px rgba(0, 0, 0, 0.1450980392));
+}
+body main #about {
+  border-radius: 5px 5px 0 0;
+  padding: 45px 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #72BBCA;
+}
+body main #about img {
+  width: 400px;
+}
+body main #about div {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+body main #about div h1 {
+  font-weight: bold;
+  font-size: 32px;
+  color: #C9B67D;
+}
+body main #about div p {
+  font-weight: normal;
+  font-size: 32px;
+  color: #ECD798;
+}
+body main #catalog {
+  background-color: #8AC99B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 75px 0;
+  border-radius: 0 0 5px 5px;
+}
+body main #catalog h1 {
+  margin-bottom: 50px;
+  font-weight: bold;
+  font-size: 64px;
+  color: #ECD798;
+}
+body main #catalog .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+}
+body main #catalog .cards .card {
+  background-color: #D3DEBC;
+  border-radius: 10px;
+  padding: 15px;
+}
+body main #catalog .cards .card P {
+  margin-top: 15px;
+}
+body main #catalog .cards .card button {
+  margin-left: calc(50% - 50px);
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  width: 100px;
+  height: 25px;
+  border-radius: 11px;
+  border: #8AC99B solid 1px;
+  background-color: #fff;
+  color: #8AC99B;
+  cursor: pointer;
+}
+body main #catalog .cards .card button:hover {
+  background-color: #8AC99B;
+  color: #fff;
+}
+body footer {
+  width: 100%;
+  margin-top: 500px;
+}
+body footer img {
+  width: 400px;
+  position: relative;
+  top: 250px;
+  left: calc((100% - 1200px) / 2);
+  border-radius: 5px;
+}
+body footer div {
+  width: 100%;
+  background-color: #333A6E;
+  padding: 33px 0;
+}
+body footer div h1, body footer div p {
+  margin-right: calc((100% - 1200px) / 2);
+  text-align: end;
+}
+body footer div h1 {
+  font-weight: bold;
+  font-size: 40px;
+  color: #ECD798;
+}
+body footer div p {
+  margin-top: 33px;
+  font-weight: normal;
+  font-size: 32px;
+  color: #C9B67D;
+}/*# sourceMappingURL=style.css.map */
