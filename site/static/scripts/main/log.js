@@ -33,7 +33,7 @@ function send_log(){
         },
         (response) => {
             console.log(response)
-            if (response){
+            if (response === 'true'){
                 seseion_login = login
                 seseion_password = password
                 login_out(login)
@@ -69,7 +69,7 @@ function Regestration(){
         },
         (response) => {
             console.log(response)
-            if (response){
+            if (response === 'true'){
                 seseion_login = login
                 seseion_password = password
                 login_out(login)

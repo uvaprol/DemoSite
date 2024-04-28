@@ -7,7 +7,7 @@ function Buy(){
     $.get('/add_order', {
         'order' : orders
     }, (response)=> {
-    if(response){
+    if(response === 'true'){
         window.location.replace('/')
     }})
     .fail(()=>console.log(false))

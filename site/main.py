@@ -20,27 +20,25 @@ def regestration():
     global users_db
     try:
         print(users_db.set_index('login').loc[request.args['login']])
-        reg_key = False
     except:
-        reg_key = True
-    if reg_key:
         user = {'login': request.args['login'],
                 'password': request.args['password'],
                 'shoper': '_'}
         users_db = users_db._append(user, ignore_index=True)
         users_db.to_csv('users.csv', index=False, header=True)
-    else:
-        return 'false'
-    return 'true'
+        return 'true'
+    return 'false'
+
 
 @app.route('/LogIn')
 def login():
     global users_db
     try:
         if users_db.set_index('login').at[request.args['login'], 'password'] == request.args['password']:
-            return 'false'
+            return 'true'
     except:
-        return 'true'
+        pass
+    return 'false'
 
 @app.route('/addItem')
 def add_to_shoper():
@@ -86,4 +84,4 @@ def add_order():
     ordering_db.to_csv('ordering.csv', index=False, header=True)
     return 'true'
 
-app.run(host='0.0.0.0', port=80)
+app.run(host='0.0.0.0', port=80, debug=dev_mode)
