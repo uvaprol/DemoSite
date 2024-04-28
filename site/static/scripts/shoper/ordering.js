@@ -6,5 +6,9 @@ function Buy(){
     }
     $.get('/add_order', {
         'order' : orders
-    })
+    }, (response)=> {
+    if(response){
+        window.location.replace('/')
+    }})
+    .fail(()=>console.log(false))
 }

@@ -30,17 +30,17 @@ def regestration():
         users_db = users_db._append(user, ignore_index=True)
         users_db.to_csv('users.csv', index=False, header=True)
     else:
-        return [False, 'Имя занято']
-    return [True, 'Вы успешно зарегестрировались']
+        return 'false'
+    return 'true'
 
 @app.route('/LogIn')
 def login():
     global users_db
     try:
         if users_db.set_index('login').at[request.args['login'], 'password'] == request.args['password']:
-            return [True, 'Вы успешно зашли в лк']
+            return 'false'
     except:
-        return [False, 'Ошибка при входе']
+        return 'true'
 
 @app.route('/addItem')
 def add_to_shoper():
@@ -53,9 +53,9 @@ def add_to_shoper():
             users_db.loc[request.args['login'], ['shoper']] = shoper
             users_db.reset_index(inplace= True )
             users_db.to_csv('users.csv', index=False, header=True)
-            return [True, 'Продукт добавлен в корзину']
+            return 'true'
     except:
-        return [False, 'Ошибка добавления']
+        return 'false'
 
 @app.route('/get_products')
 def post_catalog_cards():
@@ -84,6 +84,6 @@ def add_order():
         }
         ordering_db = ordering_db._append(new_order, ignore_index=True)
     ordering_db.to_csv('ordering.csv', index=False, header=True)
-    return [True, 'Заказ сформирован']
+    return 'true'
 
 app.run(host='0.0.0.0', port=80)

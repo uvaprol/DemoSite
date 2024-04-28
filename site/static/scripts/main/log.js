@@ -31,9 +31,9 @@ function send_log(){
             'login'   : login,
             'password': password
         },
-        (data) => {
-            console.log(data)
-            if (data[0]){
+        (response) => {
+            console.log(response)
+            if (response){
                 seseion_login = login
                 seseion_password = password
                 login_out(login)
@@ -67,9 +67,9 @@ function Regestration(){
         'login'   : login,
         'password': password
         },
-        (data) => {
-            console.log(data)
-            if (data[0]){
+        (response) => {
+            console.log(response)
+            if (response){
                 seseion_login = login
                 seseion_password = password
                 login_out(login)
