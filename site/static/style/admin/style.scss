@@ -1,0 +1,89 @@
+textarea, input, button{
+    border-radius: 5px;
+    border: 1px solid #00000000;
+    background-color: #00000000;
+    resize: vertical;
+}
+textarea:focus, input:focus, button:hover{
+    background-color: rgb(140, 255, 217);
+    outline: none;
+}
+input:hover, textarea:hover{
+    border-color: #000;
+}
+button{
+    background-color: #00000000;
+    width: 20%;
+    margin-left: 40%;
+}
+
+
+body{
+    margin: 0;
+    width: 100%;
+    background-color: rgb(137, 228, 228);
+    header{
+        width: 100%;
+        h1{
+            width: 100%;
+            text-align: center;
+        }
+        section{
+            padding: 0 33%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+    main{
+        display: none;
+        width: 100%;
+        section{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            #show, #add, #refresh{
+                margin-top: 25px;
+                border: 10px solid aquamarine;
+                border-radius: 15px;
+                background-color: rgb(180, 255, 230);
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+                padding: 2.5%;
+                gap: 15px;
+            }
+            #show{
+                display: table;
+                td{
+                    border: solid black 1px;
+                    width: 30%;
+                    text-align: center;
+                }
+            }
+            #refresh{
+                width: 100%;
+                tr{
+                    border-bottom: 1px solid #000;
+                    width: 100%;
+                    display: table;
+                    textarea, input, button{
+                        width: 90%;
+                        resize: none;
+                    }
+                    td{
+                        width: 20%;
+                        button{
+                            width: 100%;
+                            margin: 0;
+                        }
+                        .danger:hover{
+                            background-color: rgb(192, 93, 93);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

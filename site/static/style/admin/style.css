@@ -1,0 +1,90 @@
+textarea, input, button {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  resize: vertical;
+}
+
+textarea:focus, input:focus, button:hover {
+  background-color: rgb(140, 255, 217);
+  outline: none;
+}
+
+input:hover, textarea:hover {
+  border-color: #000;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0);
+  width: 20%;
+  margin-left: 40%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  background-color: rgb(137, 228, 228);
+}
+body header {
+  width: 100%;
+}
+body header h1 {
+  width: 100%;
+  text-align: center;
+}
+body header section {
+  padding: 0 33%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+body main {
+  width: 100%;
+}
+body main section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body main section #show, body main section #add, body main section #refresh {
+  margin-top: 25px;
+  border: 10px solid aquamarine;
+  border-radius: 15px;
+  background-color: rgb(180, 255, 230);
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5%;
+  gap: 15px;
+}
+body main section #show {
+  display: table;
+}
+body main section #show td {
+  border: solid black 1px;
+  width: 30%;
+  text-align: center;
+}
+body main section #refresh {
+  width: 100%;
+}
+body main section #refresh tr {
+  border-bottom: 1px solid #000;
+  width: 100%;
+  display: table;
+}
+body main section #refresh tr textarea, body main section #refresh tr input, body main section #refresh tr button {
+  width: 90%;
+  resize: none;
+}
+body main section #refresh tr td {
+  width: 20%;
+}
+body main section #refresh tr td button {
+  width: 100%;
+  margin: 0;
+}
+body main section #refresh tr td .danger:hover {
+  background-color: rgb(192, 93, 93);
+}/*# sourceMappingURL=style.css.map */

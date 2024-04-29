@@ -14,6 +14,11 @@ def display_main():
 @app.route('/shopingCart')
 def display_shopingCart():
     return render_template('shopingCart.html')
+@app.route('/admin')
+def display_adminPanel():
+    return render_template('admin.html')
+
+
 
 @app.route('/SignIn')
 def regestration():
@@ -83,5 +88,7 @@ def add_order():
         ordering_db = ordering_db._append(new_order, ignore_index=True)
     ordering_db.to_csv('ordering.csv', index=False, header=True)
     return 'true'
+
+
 
 app.run(host='0.0.0.0', port=80, debug=dev_mode)
