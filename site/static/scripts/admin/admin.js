@@ -4,13 +4,20 @@ function show(){
     let tableShow = show.getElementsByTagName('tbody')[0]
     let tableRefresh = refresh.getElementsByTagName('tbody')[0]
     let lineCount = 0
-    tableShow.innerHTML += `
-    <tr>
-        <td><b>Status</b></td>
-        <td><b>Order</b></td>
-        <td><b>Date</b></td>
-    </tr>
-    `
+    $.get('/get_orders',
+        (data) => {
+            for (row of data){
+                console.log(row)
+                tableShow.innerHTML += `
+                <tr>
+                    <td><b>Status</b></td>
+                    <td><b>Order</b></td>
+                    <td><b>Date</b></td>
+                </tr>
+                `
+            }
+        }
+    );
     tableRefresh.innerHTML += `
     <tr>
         <td><input type="text" placeholder="name" value=''></td>
