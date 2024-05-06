@@ -15,6 +15,7 @@ button{
     background-color: #00000000;
     width: 20%;
     margin-left: 40%;
+    cursor: pointer;
 }
 
 
@@ -36,7 +37,7 @@ body{
         }
     }
     main{
-        display: none;
+        display: block;
         width: 100%;
         section{
             width: 100%;
@@ -81,6 +82,12 @@ body{
                         .danger:hover{
                             background-color: rgb(192, 93, 93);
                         }
+                    }
+                }
+                tr:first-child{
+                    button{
+                        opacity: 0;
+                        cursor: default;
                     }
                 }
             }

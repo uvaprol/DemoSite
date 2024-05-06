@@ -89,6 +89,9 @@ def add_order():
     ordering_db.to_csv('ordering.csv', index=False, header=True)
     return 'true'
 
+@app.route('/get_orders')
+def post_orders():
+    return [[item for item in row] for index, row in pd.read_csv('ordering.csv').reset_index().iterrows()]
 
 
 app.run(host='0.0.0.0', port=80, debug=dev_mode)
