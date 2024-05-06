@@ -15,9 +15,9 @@
     <header>
         <h1>AdminPanel</h1>
         <section>
-            <input type="text" placeholder="login" id="login">
-            <input type="password" placeholder="password" id="password">
-            <button>Войти</button>
+            <input type="text" placeholder="login" id="admin_login">
+            <input type="password" placeholder="password" id="admin_password">
+            <button onclick="OpenPannel()">Войти</button>
         </section>
     </header> 
     <main>
@@ -36,7 +36,7 @@
                 <input type="text" placeholder="short description">
                 <textarea placeholder="long description"></textarea>
                 <input type="text" placeholder="img-src">
-                <button onclick="add()">add</button>
+                <button onclick="add_card()">add</button>
             </div>
             <table id="refresh">
                 <tr>

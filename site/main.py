@@ -3,10 +3,14 @@ from datetime import date
 import pandas as pd
 
 dev_mode = False
-users_db = pd.read_csv('users.csv')
-ordering_db = pd.read_csv('ordering.csv')
+USERS_DB = pd.read_csv('users.csv')
+ORDERING_DB = pd.read_csv('ordering.csv')
+PRODUCTS_DB = pd.read_csv('products.csv')
+ADMIN_LOGIN = 'admin'
+ADMIN_PASSWORD = 'admin'
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def display_main():
@@ -19,27 +23,25 @@ def display_adminPanel():
     return render_template('admin.html')
 
 
-
 @app.route('/SignIn')
 def regestration():
-    global users_db
+    global USERS_DB
     try:
-        print(users_db.set_index('login').loc[request.args['login']])
+        print(USERS_DB.set_index('login').loc[request.args['login']])
     except:
         user = {'login': request.args['login'],
                 'password': request.args['password'],
                 'shoper': '_'}
-        users_db = users_db._append(user, ignore_index=True)
-        users_db.to_csv('users.csv', index=False, header=True)
+        USERS_DB = USERS_DB._append(user, ignore_index=True)
+        USERS_DB.to_csv('users.csv', index=False, header=True)
         return 'true'
     return 'false'
 
-
 @app.route('/LogIn')
 def login():
-    global users_db
+    global USERS_DB
     try:
-        if users_db.set_index('login').at[request.args['login'], 'password'] == request.args['password']:
+        if USERS_DB.set_index('login').at[request.args['login'], 'password'] == request.args['password']:
             return 'true'
     except:
         pass
@@ -47,15 +49,15 @@ def login():
 
 @app.route('/addItem')
 def add_to_shoper():
-    global users_db
+    global USERS_DB
     try:
-        if users_db.set_index('login').at[request.args['login'], 'password'] == request.args['password']:
-            users_db = users_db.set_index('login')
-            shoper = users_db.loc[request.args['login'], 'shoper']
+        if USERS_DB.set_index('login').at[request.args['login'], 'password'] == request.args['password']:
+            USERS_DB = USERS_DB.set_index('login')
+            shoper = USERS_DB.loc[request.args['login'], 'shoper']
             shoper += '|' + request.args['product']
-            users_db.loc[request.args['login'], ['shoper']] = shoper
-            users_db.reset_index(inplace= True )
-            users_db.to_csv('users.csv', index=False, header=True)
+            USERS_DB.loc[request.args['login'], ['shoper']] = shoper
+            USERS_DB.reset_index(inplace= True )
+            USERS_DB.to_csv('users.csv', index=False, header=True)
             return 'true'
     except:
         return 'false'
@@ -66,16 +68,16 @@ def post_catalog_cards():
 
 @app.route('/get_shoper')
 def post_user_shoper():
-    global users_db
-    users_db = users_db.set_index('login')
-    shoper = users_db.loc['uvaprol', 'shoper']
+    global USERS_DB
+    USERS_DB = USERS_DB.set_index('login')
+    shoper = USERS_DB.loc['uvaprol', 'shoper']
     shoper = shoper.split('|')
     shoper.remove('_')
     return shoper
 
 @app.route('/add_order')
 def add_order():
-    global ordering_db
+    global ORDERING_DB
     orders = request.args['order'].split('|')
     orders.remove('_')
     print(orders)
@@ -85,13 +87,28 @@ def add_order():
             'order' : order,
             'date'  : date.today()
         }
-        ordering_db = ordering_db._append(new_order, ignore_index=True)
-    ordering_db.to_csv('ordering.csv', index=False, header=True)
+        ORDERING_DB = ORDERING_DB._append(new_order, ignore_index=True)
+    ORDERING_DB.to_csv('ordering.csv', index=False, header=True)
     return 'true'
 
 @app.route('/get_orders')
 def post_orders():
     return [[item for item in row] for index, row in pd.read_csv('ordering.csv').reset_index().iterrows()]
 
+@app.route('/add_card')
+def update_products():
+    if request.args['admin_login'] == ADMIN_LOGIN and request.args['admin_password'] == ADMIN_PASSWORD:
+        global PRODUCTS_DB
+        new_card = {
+            'name'             : request.args['name'],
+            'cost'             : request.args['cost'],
+            'short-description': request.args['short-description'],
+            'long-description' : request.args['long-description'],
+            'img-src'          : request.args['img-src']
+        }
+        PRODUCTS_DB = PRODUCTS_DB._append(new_card, ignore_index=True)
+        PRODUCTS_DB.to_csv('products.csv', index=False, header=True)
+        return 'true'
+    return 'false'
 
 app.run(host='0.0.0.0', port=80, debug=dev_mode)
