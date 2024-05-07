@@ -64,7 +64,9 @@ def add_to_shoper():
 
 @app.route('/get_products')
 def post_catalog_cards():
-    return [[item for item in row] for index, row in pd.read_csv('products.csv').reset_index().iterrows()]
+    if request.args['admin_login'] == ADMIN_LOGIN and request.args['admin_password'] == ADMIN_PASSWORD:
+        return [[item for item in row] for index, row in pd.read_csv('products.csv').reset_index().iterrows()]
+    return 'false'
 
 @app.route('/get_shoper')
 def post_user_shoper():
@@ -93,8 +95,9 @@ def add_order():
 
 @app.route('/get_orders')
 def post_orders():
-    print([[item for item in row] for index, row in pd.read_csv('ordering.csv').reset_index().iterrows()])
-    return [[item for item in row] for index, row in pd.read_csv('ordering.csv').reset_index().iterrows()]
+    if request.args['admin_login'] == ADMIN_LOGIN and request.args['admin_password'] == ADMIN_PASSWORD:
+        return [[item for item in row] for index, row in pd.read_csv('ordering.csv').reset_index().iterrows()]
+    return 'false'
 
 @app.route('/add_card')
 def update_products():

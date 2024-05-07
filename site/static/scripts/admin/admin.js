@@ -39,31 +39,25 @@ function refreshRender(row){
 }
 
 function show_panel(){
-    $.get('/get_orders', {
-        'admin_password'   : admin_password.value,
-        'admin_login'      : admin_login.value
-    }, (data) => {
-        if (data !== 'false'){
-            for (row of data){
-            //remake on checkbox
-            console.log(data)
-            tableShow.innerHTML += `
-            <tr>
-                <td><b>${row[1]}</b></td>
-                <td><b>${row[2]}</b></td>
-                <td><b>${row[3]}</b></td>
-            </tr>`
-            }
+    $.get('/get_orders',
+    (data) => {
+        for (row of data){
+        //remake on checkbox
+        console.log(data)
+        tableShow.innerHTML += `
+        <tr>
+            <td><b>${row[1]}</b></td>
+            <td><b>${row[2]}</b></td>
+            <td><b>${row[3]}</b></td>
+        </tr>`
         }
     });
-    $.get('/get_products', {
-        'admin_password'   : admin_password.value,
-        'admin_login'      : admin_login.value
-        }, (data) => {
-            for (row of data){
-                refreshRender(row)
-            }
-        });
+    $.get('/get_products',
+    (data) => {
+        for (row of data){
+            refreshRender(row)
+        }
+    });
 }
 
 function add_card(){
