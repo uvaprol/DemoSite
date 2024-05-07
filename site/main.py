@@ -93,6 +93,7 @@ def add_order():
 
 @app.route('/get_orders')
 def post_orders():
+    print([[item for item in row] for index, row in pd.read_csv('ordering.csv').reset_index().iterrows()])
     return [[item for item in row] for index, row in pd.read_csv('ordering.csv').reset_index().iterrows()]
 
 @app.route('/add_card')
@@ -110,5 +111,12 @@ def update_products():
         PRODUCTS_DB.to_csv('products.csv', index=False, header=True)
         return 'true'
     return 'false'
+
+@app.route('/AdminLogin')
+def check_admin_login():
+    if request.args['admin_login'] == ADMIN_LOGIN and request.args['admin_password'] == ADMIN_PASSWORD:
+        return 'true'
+    return 'false'
+
 
 app.run(host='0.0.0.0', port=80, debug=dev_mode)

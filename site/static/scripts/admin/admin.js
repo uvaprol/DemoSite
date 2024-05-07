@@ -4,10 +4,24 @@ const show =  document.getElementById('show')
 const tableShow = show.getElementsByTagName('tbody')[0]
 const tableRefresh = refresh.getElementsByTagName('tbody')[0]
 const add = document.getElementById('add')
+const main = document.getElementsByTagName('main')[0]
+const log_field = document.getElementsByTagName('section')[0]
 
 function OpenPannel(){
     const admin_password = document.getElementById('admin_password')
     const admin_login = document.getElementById('admin_login')
+    $.get('/AdminLogin', {
+        'admin_password'   : admin_password.value,
+        'admin_login'      : admin_login.value,
+    }, (response) => {
+        if (response === 'true'){
+            log_field.style.display = 'none'
+            main.style.display = 'block'
+            show_panel()
+        } else{
+            alert('Bad login')
+        }
+    })
 }
 
 function refreshRender(row){
@@ -25,26 +39,31 @@ function refreshRender(row){
 }
 
 function show_panel(){
-    $.get('/get_orders',
-        (data) => {
+    $.get('/get_orders', {
+        'admin_password'   : admin_password.value,
+        'admin_login'      : admin_login.value
+    }, (data) => {
+        if (data !== 'false'){
             for (row of data){
-                //remake on checkbox
-                tableShow.innerHTML += `
-                <tr>
-                    <td><b>${row[1]}</b></td>
-                    <td><b>${row[2]}</b></td>
-                    <td><b>${row[3]}</b></td>
-                </tr>`
+            //remake on checkbox
+            console.log(data)
+            tableShow.innerHTML += `
+            <tr>
+                <td><b>${row[1]}</b></td>
+                <td><b>${row[2]}</b></td>
+                <td><b>${row[3]}</b></td>
+            </tr>`
             }
         }
-    );
-    $.get('/get_products',
-        (data) => {
+    });
+    $.get('/get_products', {
+        'admin_password'   : admin_password.value,
+        'admin_login'      : admin_login.value
+        }, (data) => {
             for (row of data){
                 refreshRender(row)
             }
-        }
-    );
+        });
 }
 
 function add_card(){
@@ -93,12 +112,13 @@ function update(index){
 //    console.log(td[2]['children'][0]['value'])
 //    console.log(td[3]['children'][0]['value'])
 //    console.log(td[4]['children'][0]['value'])
-
+//    необходимо продумать систему артикулей
     
 }
 
 function deleteCard(index){
     console.log(index)// я не могу понять каким образом отправляется сразу нода
     tableRefresh.removeChild(index)
+    // дописать запрос на удаление в базу
 }
-window.onload = () => {show_panel()}
+//window.onload = () => {show_panel()}
